@@ -101,9 +101,10 @@ export default function Home() {
           </div>
 
           <div className="projects-grid">
-            <div className="project-card group">
+            {projects.map(({id, name, renderedImage, sourceImage, timestamp}) => (
+              <div className="project-card group">
               <div className="preview">
-                <img src="https://roomify-mlhuk267-dfwu1i.puter.site/projects/1770803585402/rendered.png" alt="Project preview" />
+                <img src={renderedImage || sourceImage} alt="Project preview" />
 
                 <div className="badge">
                 <span>Community</span>
@@ -112,11 +113,11 @@ export default function Home() {
 
               <div className="card-body">
                 <div>
-                  <h3>Project LA</h3>
+                  <h3>{name}</h3>
 
                   <div className="meta">
                     <Clock size={12} />
-                    <span>{new Date('01.01.2027').toLocaleDateString()}</span>
+                    <span>{new Date(timestamp).toLocaleDateString()}</span>
                     <span>By Ayush</span>
                   </div>
                 </div>
@@ -126,6 +127,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            ))}
+
           </div>
         </div>
       </section>
